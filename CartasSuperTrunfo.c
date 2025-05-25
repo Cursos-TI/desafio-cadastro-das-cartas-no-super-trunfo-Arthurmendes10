@@ -75,7 +75,7 @@ int main() {
     printf("Porfavor, digite o número de pontos turísticos da cidade da segunda carta:");
     scanf("%s", pontosturisticos2);
 
-    printf("Meus parabéns!, você cadastrou as cartas deste jogo de trunfo super interessante que utiliza apenas duas cartas, risos!"/n);
+    printf("Meus parabéns!, você cadastrou as cartas deste jogo de trunfo super interessante que utiliza apenas duas cartas, risos!");
     
     return 0;
 }
