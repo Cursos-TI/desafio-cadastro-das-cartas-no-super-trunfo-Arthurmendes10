@@ -22,15 +22,15 @@ int main() {
     int codigocidade1;
     int nome1;
     int populacao1;
-    int area1;
-    int pib1;
+    float area1;
+    float pib1;
     int pontosturisticos1;
 
     int codigocidade2;
     int nome2;
     int populacao2;
-    int area2;
-    int pib2;
+    float area2;
+    float pib2;
     int pontosturisticos2;
 
     printf("Vamos cadastrar a primeira cara do super trunfo!");
