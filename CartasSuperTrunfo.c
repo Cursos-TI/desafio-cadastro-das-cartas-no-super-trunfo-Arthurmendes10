@@ -1,81 +1,88 @@
 #include <stdio.h>
+#include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+#define TAM_NOME 50
+
+// Estrutura da carta
+
+struct Carta {
+
+    char cidade[TAM_NOME];
+    int populacao;
+
+};
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 
+    struct Carta carta1, carta2;
+    char EstadoDeContinuidade;
+    char EstadoDoJogo;
 
-    int codigocidade1;
-    int nome1;
-    int populacao1;
-    float area1;
-    float pib1;
-    int pontosturisticos1;
+    printf("=== Jogo Super Trunfo: Cidades ===\n");
 
-    int codigocidade2;
-    int nome2;
-    int populacao2;
-    float area2;
-    float pib2;
-    int pontosturisticos2;
+    while (1) {
 
-    printf("Vamos cadastrar a primeira cara do super trunfo!");
-    
-    printf("Porfavor, digite o código da cidade da primeira carta:");
-    scanf("%s", codigocidade1);
+        // Cadastro da primeira carta
 
-    printf("Porfavor, digite o nome da cidade da primeira carta:");
-    scanf("%s", nome1);
+        printf("\nDigite o nome da primeira cidade: ");
+        fgets(carta1.cidade, TAM_NOME, stdin);
+        carta1.cidade[strcspn(carta1.cidade, "\n")] = '\0'; // Remove o \n
 
-    printf("Porfavor, digite o valor da população da cidade da primeira carta:");
-    scanf("%s", populacao1);
+        printf("Digite a populacao da cidade %s: ", carta1.cidade);
+        scanf("%d", &carta1.populacao);
+        getchar(); // Limpa o buffer do ENTER
 
-    printf("Porfavor, digite o valor da área territorial da cidade da primeira carta:");
-    scanf("%s", area1);
+        // Cadastro da segunda carta
 
-    printf("Porfavor, digite o valor do PIB da cidade da primeira carta:");
-    scanf("%s", pib1);
+        printf("\nDigite o nome da segunda cidade: ");
+        fgets(carta2.cidade, TAM_NOME, stdin);
+        carta2.cidade[strcspn(carta2.cidade, "\n")] = '\0'; // Remove o \n
 
-    printf("Porfavor, digite o número de pontos turísticos da cidade da primeira carta:");
-    scanf("%s", pontosturisticos1);
+        printf("Digite a populacao da cidade %s: ", carta2.cidade);
+        scanf("%d", &carta2.populacao);
+        getchar(); // Limpa o buffer do ENTER
 
+        // Resultado da rodada
 
+        printf("\n--- Resultado ---\n");
+        if (carta1.populacao > carta2.populacao) {
+            printf("A cidade vencedora e %s com uma diferenca de %d habitantes!\n", carta1.cidade, carta1.populacao-carta2.populacao);
+        } else if (carta2.populacao > carta1.populacao) {
+            printf("A cidade vencedora e %s com uma diferenca de %d habitantes!\n", carta2.cidade, carta2.populacao-carta1.populacao);
+        } else {
+            printf("Empate! Ambas as cidades têm %d habitantes.\n", carta1.populacao);
+        }
 
-    printf("Vamos cadastrar a segunda cara do super trunfo!");
-    
-    printf("Porfavor, digite o código da cidade da segunda carta:");
-    scanf("%s", codigocidade2);
+        // Pergunta se deseja continuar
 
-    printf("Porfavor, digite o nome da cidade da segunda carta:");
-    scanf("%s", nome2);
+    while (1) {
 
-    printf("Porfavor, digite o valor da população da cidade da segunda carta:");
-    scanf("%s", populacao2);
+        printf("\nDeseja jogar outra rodada? (s/n): ");
+        scanf(" %c", &EstadoDeContinuidade);
+        getchar(); // Limpa o buffer
 
-    printf("Porfavor, digite o valor da área territorial da cidade da segunda carta:");
-    scanf("%s", area2);
+        if (EstadoDeContinuidade == 'n' || EstadoDeContinuidade == 'N') {
+            printf("Jogo encerrado. Obrigado por jogar!\n");
+            EstadoDoJogo = 0;
+            break;
+        }
 
-    printf("Porfavor, digite o valor do PIB da cidade da segunda carta:");
-    scanf("%s", pib2);
+        if (EstadoDeContinuidade == 's' || EstadoDeContinuidade == 'S') {
+            printf("Jogo reiniciado. Boa sorte!\n");
+            EstadoDoJogo = 1;
+            break;
+        }
 
-    printf("Porfavor, digite o número de pontos turísticos da cidade da segunda carta:");
-    scanf("%s", pontosturisticos2);
+    }
 
-    printf("Meus parabéns!, você cadastrou as cartas deste jogo de trunfo super interessante que utiliza apenas duas cartas, risos!");
-    
+    if (EstadoDoJogo == 0) {
+
+    break;
+
+    }
+
+    }
+
     return 0;
+
 }
