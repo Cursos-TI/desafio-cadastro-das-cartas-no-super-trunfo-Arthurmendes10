@@ -1,87 +1,57 @@
 #include <stdio.h>
-#include <string.h>
-
-#define TAM_NOME 50
-
-// Estrutura da carta
 
 struct Carta {
-
-    char cidade[TAM_NOME];
     int populacao;
-
+    float area;
+    float pib;
+    int pontos_turisticos;
 };
 
 int main() {
-
     struct Carta carta1, carta2;
-    char EstadoDeContinuidade;
-    char EstadoDoJogo;
 
-    printf("=== Jogo Super Trunfo: Cidades ===\n");
+    // Entrada de dados para a carta 1
+    printf("Digite os dados da primeira cidade:\n");
+    printf("Populacao: ");
+    scanf("%d", &carta1.populacao);
 
-    while (1) {
+    printf("Area (em quilometros quadrados): ");
+    scanf("%f", &carta1.area);
 
-        // Cadastro da primeira carta
+    printf("PIB (em bilhoes): ");
+    scanf("%f", &carta1.pib);
 
-        printf("\nDigite o nome da primeira cidade: ");
-        fgets(carta1.cidade, TAM_NOME, stdin);
-        carta1.cidade[strcspn(carta1.cidade, "\n")] = '\0'; // Remove o \n
+    printf("Numero de pontos turisticos: ");
+    scanf("%d", &carta1.pontos_turisticos);
 
-        printf("Digite a populacao da cidade %s: ", carta1.cidade);
-        scanf("%d", &carta1.populacao);
-        getchar(); // Limpa o buffer do ENTER
+    // Entrada de dados para a carta 2
+    printf("\nDigite os dados da segunda cidade:\n");
+    printf("Populacao: ");
+    scanf("%d", &carta2.populacao);
 
-        // Cadastro da segunda carta
+    printf("Area (em quilometros quadrados): ");
+    scanf("%f", &carta2.area);
 
-        printf("\nDigite o nome da segunda cidade: ");
-        fgets(carta2.cidade, TAM_NOME, stdin);
-        carta2.cidade[strcspn(carta2.cidade, "\n")] = '\0'; // Remove o \n
+    printf("PIB (em bilhoes): ");
+    scanf("%f", &carta2.pib);
 
-        printf("Digite a populacao da cidade %s: ", carta2.cidade);
-        scanf("%d", &carta2.populacao);
-        getchar(); // Limpa o buffer do ENTER
+    printf("Numero de pontos turisticos: ");
+    scanf("%d", &carta2.pontos_turisticos);
 
-        // Resultado da rodada
+    // Saída dos dados
+    printf("\n===== Dados da Primeira Cidade =====\n");
+    printf("Populacao: %d\n", carta1.populacao);
+    printf("Area: %.2f quilometros quadrados\n", carta1.area);
+    printf("PIB: %.2f bilhoes\n", carta1.pib);
+    printf("Pontos turisticos: %d\n", carta1.pontos_turisticos);
 
-        printf("\n--- Resultado ---\n");
-        if (carta1.populacao > carta2.populacao) {
-            printf("A cidade vencedora e %s com uma diferenca de %d habitantes!\n", carta1.cidade, carta1.populacao-carta2.populacao);
-        } else if (carta2.populacao > carta1.populacao) {
-            printf("A cidade vencedora e %s com uma diferenca de %d habitantes!\n", carta2.cidade, carta2.populacao-carta1.populacao);
-        } else {
-            printf("Empate! Ambas as cidades têm %d habitantes.\n", carta1.populacao);
-        }
+    printf("\n===== Dados da Segunda Cidade =====\n");
+    printf("Populacao: %d\n", carta2.populacao);
+    printf("Area: %.2f quilometros quadrados\n", carta2.area);
+    printf("PIB: %.2f bilhoes\n", carta2.pib);
+    printf("Pontos turisticos: %d\n", carta2.pontos_turisticos);
 
-        // Pergunta se deseja continuar
-
-    while (1) {
-
-        printf("\nDeseja jogar outra rodada? (s/n): ");
-        scanf(" %c", &EstadoDeContinuidade);
-        getchar(); // Limpa o buffer
-
-        if (EstadoDeContinuidade == 'n' || EstadoDeContinuidade == 'N') {
-            printf("Jogo encerrado. Obrigado por jogar!\n");
-            EstadoDoJogo = 0;
-            break;
-        }
-
-        if (EstadoDeContinuidade == 's' || EstadoDeContinuidade == 'S') {
-            printf("Jogo reiniciado. Boa sorte!\n");
-            EstadoDoJogo = 1;
-            break;
-        }
-
-    }
-
-    if (EstadoDoJogo == 0) {
-
-    break;
-
-    }
-
-    }
+    printf("\n===== Fim do trabalho =====\n");
 
     return 0;
 
